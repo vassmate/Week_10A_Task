@@ -1,15 +1,15 @@
 package movies_v2;
 
-public class Product {
+public abstract class Product {
 
 	String id;
 	String title;
 	Person person;
 
-	public Product(String id, String title, Person person) {
-		this.id = id;
+	public Product(String title, Person person) {
 		this.title = title;
 		this.person = person;
+		id = IdGenerator.generator(this);
 	}
 
 	public String getTitle() {
@@ -20,16 +20,5 @@ public class Product {
 		return person;
 	}
 
-	public long getInvestment(Product product) {
-		if (product instanceof Movie) {
-			Movie movie = (Movie) product;
-			return movie.getInvestment();
-		} else if (product instanceof Game) {
-			Game game = (Game) product;
-			return game.getInvestment();
-		} else {
-			Book book = (Book) product;
-			return book.getInvestment();
-		}
-	}
+	public abstract long getInvestment();
 }

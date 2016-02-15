@@ -34,20 +34,12 @@ public class RentManager {
 		cast2.add(actor3);
 		cast2.add(actor4);
 
-		Game game1 = new Game(null, "DOOM", buyer1, false, staff1, 50);
-		game1.id = IdGenerator.generator(game1);
-		Game game2 = new Game(null, "DOOM II", buyer2, true, staff1, 60);
-		game2.id = IdGenerator.generator(game2);
-
-		Movie movie1 = new Movie(null, "Matrix", buyer1, Genre.SCI_FI, 120, 9.5, cast1, 25);
-		movie1.id = IdGenerator.generator(movie1);
-		Movie movie2 = new Movie(null, "Inception", buyer2, Genre.ACTION, 120, 9.0, cast2, 30);
-		movie2.id = IdGenerator.generator(movie2);
-
-		Book book1 = new Book(null, "Cloud Atlas", buyer1, writer1);
-		book1.id = IdGenerator.generator(book1);
-		Book book2 = new Book(null, "Macbeth", buyer2, writer2);
-		book2.id = IdGenerator.generator(book2);
+		Game game1 = new Game("DOOM", buyer1, false, staff1, 50);
+		Game game2 = new Game("DOOM II", buyer2, true, staff1, 60);
+		Movie movie1 = new Movie("Matrix", buyer1, Genre.SCI_FI, 120, 9.5, cast1, 25);
+		Movie movie2 = new Movie("Inception", buyer2, Genre.ACTION, 120, 9.0, cast2, 30);
+		Book book1 = new Book("Cloud Atlas", buyer1, writer1);
+		Book book2 = new Book("Macbeth", buyer2, writer2);
 
 		List<Buyable> buyableProducts = new ArrayList<Buyable>();
 		buyableProducts.add(game1);
@@ -67,15 +59,13 @@ public class RentManager {
 		for (Product product : prods) {
 			System.out.println(product.toString());
 		}
-
 		for (Product product : prods) {
-			System.out.println(product.title + " investment: " + product.getInvestment(product));
+			System.out.println(product.title + " investment: " + product.getInvestment());
 		}
 	}
 
 	public static int preferdIncome(List<Buyable> products) {
 		int prefIncome = 0;
-
 		for (Buyable product : products) {
 			prefIncome += product.getPrice();
 		}

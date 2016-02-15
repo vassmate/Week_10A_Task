@@ -14,10 +14,9 @@ public class Movie extends Product implements Buyable {
 	List<Person> cast;
 	int price;
 
-	public Movie(String id, String title, Person person, Genre genre, long duration, double rate, List<Person> cast,
-			int price) {
+	public Movie(String title, Person person, Genre genre, long duration, double rate, List<Person> cast, int price) {
 
-		super(id, title, person);
+		super(title, person);
 		this.genre = genre;
 		this.duration = duration;
 		this.rate = rate;
@@ -70,7 +69,7 @@ public class Movie extends Product implements Buyable {
 		long investment = 0;
 
 		for (Person person : cast) {
-			investment += person.salary;
+			investment += person.getSalary();
 		}
 		return investment;
 	}

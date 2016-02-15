@@ -8,8 +8,8 @@ public class Game extends Product implements Buyable {
 	List<Person> staff;
 	int price;
 
-	public Game(String id, String title, Person person, boolean preOrdered, List<Person> staff, int price) {
-		super(id, title, person);
+	public Game(String title, Person person, boolean preOrdered, List<Person> staff, int price) {
+		super(title, person);
 		this.preOrdered = preOrdered;
 		this.staff = staff;
 		this.price = price;
@@ -34,12 +34,10 @@ public class Game extends Product implements Buyable {
 	@Override
 	public int getPrice() {
 		if (isPreOrdered()) {
-			price -= price / 5;
-			System.out.println("Preordered game: " + title + " | New price: " + price);
-			return price;
-		} else {
-			return price;
+			return price - price / 5;
 		}
+		return price;
+
 	}
 
 	public void setPrice(int price) {
@@ -50,7 +48,7 @@ public class Game extends Product implements Buyable {
 		long investment = 0;
 
 		for (Person person : staff) {
-			investment += person.salary;
+			investment += person.getSalary();
 		}
 		return investment;
 	}

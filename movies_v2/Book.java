@@ -4,8 +4,8 @@ public class Book extends Product {
 
 	Person author;
 
-	public Book(String id, String title, Person person, Person author) {
-		super(id, title, person);
+	public Book(String title, Person person, Person author) {
+		super(title, person);
 		this.author = author;
 	}
 
@@ -18,9 +18,7 @@ public class Book extends Product {
 	}
 
 	public long getInvestment() {
-		long investment = 0;
-		investment += author.salary;
-		return investment;
+		return author.getSalary();
 	}
 
 	@Override
